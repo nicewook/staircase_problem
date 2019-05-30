@@ -33,7 +33,7 @@ func staircase(totalSteps int, steps []int) int {
 	return result
 }
 
-func staircaseMemoize(totalSteps int, steps []int, memo []int) int {
+func staircaseMemoize(totalSteps int, steps []int, memo []uint) uint {
 	if memo[totalSteps] != 0 {
 		return memo[totalSteps]
 	}
@@ -42,7 +42,7 @@ func staircaseMemoize(totalSteps int, steps []int, memo []int) int {
 		return 1
 	}
 
-	var result int
+	var result uint
 	for _, step := range steps {
 		stepsLeft := totalSteps - step
 		if stepsLeft < 0 {
@@ -58,17 +58,17 @@ func staircaseMemoize(totalSteps int, steps []int, memo []int) int {
 	return result
 }
 
-func staircaseBottomUp(totalSteps int, steps []int) int {
+func staircaseBottomUp(totalSteps int, steps []int) uint {
 
 	if totalSteps == 0 {
 		return 1
 	}
 
-	memo := make([]int, totalSteps+1)
+	memo := make([]uint, totalSteps+1)
 	memo[0] = 1
 
 	for tSteps := 1; tSteps <= totalSteps; tSteps++ {
-		var result int
+		var result uint
 		for _, step := range steps {
 			stepsLeft := tSteps - step
 			if stepsLeft >= 0 {

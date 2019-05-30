@@ -21,11 +21,12 @@ func TestStaircase(t *testing.T) {
 
 func TestStaircaseMemoize(t *testing.T) {
 	// t.Skip()
-	totalSteps := 4
-	steps := []int{1, 2}
-	memo := make([]int, totalSteps+1)
+	totalSteps := 100
+	steps := []int{1, 3, 5, 7, 9}
+	memo := make([]uint, totalSteps+1)
 
-	expected := 5
+	var expected uint
+	expected = 10767769711533586674
 	actual := staircaseMemoize(totalSteps, steps, memo)
 
 	fmt.Printf("staircaseMemoize: %d ways of climb\n", actual)
@@ -34,9 +35,10 @@ func TestStaircaseMemoize(t *testing.T) {
 
 func TestStaircaseBottomUp(t *testing.T) {
 	// t.Skip()
-	totalSteps := 4
-	steps := []int{1, 2}
-	expected := 5
+	totalSteps := 100
+	steps := []int{1, 3, 5, 7, 9}
+	var expected uint
+	expected = 10767769711533586674
 	actual := staircaseBottomUp(totalSteps, steps)
 
 	fmt.Printf("staircaseBottomUp: %d ways of climb\n", actual)
@@ -56,7 +58,7 @@ func BenchmarkStaircaseMemoize(b *testing.B) {
 	// t.Skip()
 	totalSteps := 100
 	steps := []int{1, 3, 5, 7, 9}
-	memo := make([]int, totalSteps+1)
+	memo := make([]uint, totalSteps+1)
 
 	for i := 0; i < b.N; i++ {
 		staircaseMemoize(totalSteps, steps, memo)
