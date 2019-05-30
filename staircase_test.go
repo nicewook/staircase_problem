@@ -58,9 +58,9 @@ func BenchmarkStaircaseMemoize(b *testing.B) {
 	// t.Skip()
 	totalSteps := 100
 	steps := []int{1, 3, 5, 7, 9}
-	memo := make([]uint, totalSteps+1)
 
 	for i := 0; i < b.N; i++ {
+		memo := make([]uint, totalSteps+1)
 		staircaseMemoize(totalSteps, steps, memo)
 	}
 }
