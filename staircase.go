@@ -1,18 +1,5 @@
 package staircase
 
-// import "strconv"
-
-// const MaxIntVal = int(^uint(0) >> 1)
-// const MinIntVal = -MaxIntVal - 1
-// const MinVal = -1
-
-// func MaxInt(x, y int) int {
-// 	if x > y {
-// 		return x
-// 	}
-// 	return y
-// }
-
 func staircase(totalSteps int, steps []int) int {
 	if totalSteps == 0 {
 		return 1
