@@ -42,63 +42,33 @@ func TestStaircaseBottomUp(t *testing.T) {
 	fmt.Printf("staircaseBottomUp: %d ways of climb\n", actual)
 	assert.Equal(t, expected, actual, "they should be equal")
 }
+func BenchmarkStaircase(b *testing.B) {
+	// t.Skip()
+	totalSteps := 4
+	steps := []int{1, 2}
 
-// func BenchmarkEggDrop(b *testing.B) {
-// 	// t.Skip()
-// 	egg := 2
-// 	floor := 10
+	for i := 0; i < b.N; i++ {
+		staircase(totalSteps, steps)
+	}
+}
 
-// 	for i := 0; i < b.N; i++ {
-// 		eggDrop(egg, floor)
-// 	}
-// }
+func BenchmarkStaircaseMemoize(b *testing.B) {
+	// t.Skip()
+	totalSteps := 100
+	steps := []int{1, 3, 5, 7, 9}
+	memo := make([]int, totalSteps+1)
 
-// func BenchmarkEggMemoize(b *testing.B) {
-// 	// t.Skip()
-// 	egg := 3
-// 	floor := 1000
+	for i := 0; i < b.N; i++ {
+		staircaseMemoize(totalSteps, steps, memo)
+	}
+}
 
-// 	eggIdx := egg + 1
-// 	floorIdx := floor + 1
+func BenchmarkStaircaseBottomUp(b *testing.B) {
+	// t.Skip()
+	totalSteps := 100
+	steps := []int{1, 3, 5, 7, 9}
 
-// 	// create and initialize memo
-// 	memo := make([][]int, eggIdx)
-// 	for i := 0; i < eggIdx; i++ {
-// 		memo[i] = make([]int, floorIdx)
-// 	}
-
-// 	for i := 0; i < eggIdx; i++ {
-// 		for j := 0; j < floorIdx; j++ {
-// 			memo[i][j] = MinVal
-// 		}
-// 	}
-
-// 	for i := 0; i < b.N; i++ {
-// 		eggMemoize(egg, floor, memo)
-// 	}
-// }
-
-// func BenchmarkEggBottomUp(b *testing.B) {
-// 	// t.Skip()
-// 	egg := 3
-// 	floor := 1000
-
-// 	eggIdx := egg + 1
-// 	floorIdx := floor + 1
-
-// 	// create and initialize memo
-// 	memo := make([][]int, eggIdx)
-// 	for i := 0; i < eggIdx; i++ {
-// 		memo[i] = make([]int, floorIdx)
-// 	}
-
-// 	for i := 0; i < eggIdx; i++ {
-// 		for j := 0; j < floorIdx; j++ {
-// 			memo[i][j] = MinVal
-// 		}
-// 	}
-
-// 	for i := 0; i < b.N; i++ {
-// 		eggBottomUp(egg, floor, memo)
-// 	}
-// }
+	for i := 0; i < b.N; i++ {
+		staircaseBottomUp(totalSteps, steps)
+	}
+}
